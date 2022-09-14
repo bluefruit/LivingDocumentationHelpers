@@ -28,9 +28,4 @@ Scenario: {{ scenario.name }}
 {% set state.screenshots = screenshots_from_step(step) %}
     * - {{ step.step_type }} {{ step.name }}
       - :{{ status_to_style(step.status) }}:`{{ step.status }}`
-{%- if state.screenshots|length > 0 %}
-      -{% for screenshot in state.screenshots %} :download:`{{ screenshot }}`{% endfor %}
-{%- else %}
-      -
-{%- endif %}
 {%- endfor %}
