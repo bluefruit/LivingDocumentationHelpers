@@ -15,7 +15,8 @@ setup(
         "console_scripts": [
             "behave2sphinx = living_documentation_helpers.create_sphinx_feature_file_page:main",
             "behave2sphinx-all = living_documentation_helpers.create_sphinx_feature_file_page:process_files_in_current_directory",
-            "userneeds2sphinx = living_documentation_helpers.create_userneeds_page:main"
+            "userneeds2sphinx = living_documentation_helpers.create_userneeds_page:main",
+            "createtracepage = living_documentation_helpers.create_trace_page:main"
         ]
     },
     include_package_data=True,

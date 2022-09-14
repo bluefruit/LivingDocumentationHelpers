@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 import sys
-import json
 import pathlib
 from os import path
 from glob import glob
-from .collecting_formatter import CollectedFeature, CollectedStep
+from .collecting_formatter import CollectedStep
+from .feature_file import load_feature_file
 from jinja2 import Environment, FileSystemLoader
 
 
@@ -37,16 +37,6 @@ def screenshots_from_step(step: CollectedStep):
             screenshots.append(line_split[1])
     return screenshots
 
-
-def read_feature(feature_path):
-    if not path.exists(feature_path):
-        print('Unable to find feature file\n')
-        exit(2)
-
-    with open(feature_path, 'rt') as file:
-        return CollectedFeature.from_json(json.load(file))
-
-
 def main(args=None):
     if args is None:
         args = sys.argv
@@ -55,7 +45,7 @@ def main(args=None):
         print('Invalid command format, format is:\n {a[0]} <json feature result>\n'.format(a=args))
         exit(1)
 
-    feature = read_feature(args[1])
+    feature = load_feature_file(args[1])
 
     context = {
         "feature": feature,
@@ -75,7 +65,7 @@ def process_files_in_current_directory():
 
     for file in files:
         print(u'Converting {f}'.format(f=file))
-        feature = read_feature(file)
+        feature = load_feature_file(file)
 
         context = {
             "feature": feature,
