@@ -1,2 +1,3 @@
 include living_documentation_helpers/feature.jinja2
 include living_documentation_helpers/scenario.jinja2
+include living_documentation_helpers/userneeds.jinja2
