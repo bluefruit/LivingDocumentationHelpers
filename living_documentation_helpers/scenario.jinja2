@@ -10,9 +10,9 @@
 
 {%- for tag in scenario.tags -%}
 {%- if tag.startswith('UN') -%}
-:ref:`{{ tag }} <{{ tag }}>`
+:ref:`@{{ tag }} <{{ tag }}>`
 {% else -%}
-{{ tag }}
+@{{ tag }}
 {% endif -%}
 {%- endfor %}
 
