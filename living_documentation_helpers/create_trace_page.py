@@ -2,7 +2,7 @@ import sys
 from os import path
 from .template import convert_template
 from .userneeds import load_userneeds_from_file
-from .feature_file import load_all_feature_files_in_directory
+from .feature_file import load_all_feature_files_in_directory, status_to_style
 from .collecting_formatter import CollectedFeature, CollectedScenario
 
 
@@ -55,7 +55,8 @@ def main(args=None):
                 add_scenario_to_userneed(userneeds, userneedId, scenarioId, feature.name + ' - ' + scenario.name, result)
 
     context = {
-        "userneeds": userneeds
+        "userneeds": userneeds,
+        "status_to_style": status_to_style
     }
 
     with open(args[3], 'wt') as file:

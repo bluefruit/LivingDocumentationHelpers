@@ -4,29 +4,13 @@ import pathlib
 from os import path
 from glob import glob
 from .collecting_formatter import CollectedStep
-from .feature_file import load_feature_file
+from .feature_file import load_feature_file, status_to_style
 from jinja2 import Environment, FileSystemLoader
 
 
 current_directory = pathlib.Path(__file__).parent.resolve()
 env = Environment(loader=FileSystemLoader(current_directory, followlinks=True))
 template = env.get_template('feature.jinja2')
-
-status_to_style_dict = {
-    'not run': 'notrun',
-    # behave.model_core.Status
-    'untested': 'notrun',
-    'skipped': 'notrun',
-    'passed': 'passed',
-    'failed': 'failed',
-    'undefined': 'notimplemented',
-    'executing': 'notrun'
-}
-
-
-def status_to_style(status):
-    return status_to_style_dict.get(status, 'failed')
-
 
 def screenshots_from_step(step: CollectedStep):
     screenshots = []
