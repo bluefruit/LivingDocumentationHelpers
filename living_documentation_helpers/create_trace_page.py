@@ -19,7 +19,7 @@ def add_scenario_to_userneed(userneeds, userneedId, scenarioId, scenarioName, re
 
 def userneed_id_for_scenario(scenario: CollectedScenario):
     for tag in scenario.tags:
-        if(tag.lower().startswith('un-')):
+        if(tag.lower().startswith('un_')):
             return tag.lower()
 
     return ''
@@ -27,7 +27,7 @@ def userneed_id_for_scenario(scenario: CollectedScenario):
 
 def id_for_scenario(scenario: CollectedScenario):
     for tag in scenario.tags:
-        if(tag.lower().startswith('id-')):
+        if(tag.lower().startswith('id_')):
             return tag
 
     return ''
