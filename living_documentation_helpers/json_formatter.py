@@ -7,10 +7,10 @@ class JSONFormatter(CollectingFormatter):
     def __init__(self, stream_opener, config):
         super().__init__(stream_opener, config)
 
-        self.outputDirectory = path.join(config.base_dir, config.userdata['behave.formatter.spjson.path'])
+        self.outputDirectory = path.join(config.base_dir, config.userdata['behave.formatter.customjson.path'])
 
-        if 'behave.formatter.spjson.single_file' in config.userdata:
-            self.singleFile = (config.userdata['behave.formatter.spjson.single_file'] == 'True')
+        if 'behave.formatter.customjson.single_file' in config.userdata:
+            self.singleFile = (config.userdata['behave.formatter.customjson.single_file'] == 'True')
         else:
             self.singleFile = False
 

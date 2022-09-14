@@ -2,7 +2,6 @@ from behave.model import Feature, Scenario, Step
 from behave.formatter.base import Formatter
 from typing import List
 from itertools import chain
-from screenplay.log import Log
 import time
 
 
@@ -87,8 +86,6 @@ class CollectingFormatter(Formatter):
 
         self.stepsToProcess: List[CollectedStep] = []
         self.currentStep_text: List[str] = []
-
-        Log.write_line = self.write_function()
 
     def write_function(self):
         def formatter_write_line(*values, sep=''):
